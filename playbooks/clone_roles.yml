@@ -1,0 +1,20 @@
+---
+- name: klonowanie roli
+  hosts: "{{ target | default('all')}}"
+  become: yes
+  vars:
+    - git_repository: "https://github.com/michalrasinskigithub/test.git"
+    - git_branch: "main"
+    - katalog_roli_ansible: "/etc/ansible/roles"
+  tasks:
+    - name: utworz katalog o ile nie istnieje
+      file:
+        path: /etc/ansible/roles
+        state: directory
+        mode: '0755'
+    - name: wykonaj git checkout na repo
+      git:
+        repo: "{{ git_repository }}"
+        dest: "{{ katalog_roli_ansible }}"
+        version: "{{ git_branch }}"
+
