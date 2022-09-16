@@ -9,7 +9,7 @@
   tasks:
     - name: utworz katalog o ile nie istnieje
       file:
-        path: "{{ katalog_roli_ansible }}""
+        path: "{{ katalog_roli_ansible }}"
         state: directory
         mode: '0755'
     - name: wykonaj git checkout na repo
