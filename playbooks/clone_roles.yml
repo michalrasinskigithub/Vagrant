@@ -3,13 +3,13 @@
   hosts: "{{ target | default('all')}}"
   become: yes
   vars:
-    - git_repository: "https://github.com/michalrasinskigithub/test.git"
+    - git_repository: "https://github.com/michalrasinskigithub/Ansible_roles.git"
     - git_branch: "main"
     - katalog_roli_ansible: "/etc/ansible/roles"
   tasks:
     - name: utworz katalog o ile nie istnieje
       file:
-        path: /etc/ansible/roles
+        path: "{{ katalog_roli_ansible }}""
         state: directory
         mode: '0755'
     - name: wykonaj git checkout na repo
